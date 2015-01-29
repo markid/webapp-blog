@@ -26,6 +26,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+PAGINATION_DEFAULT_PAGINATION = 2
 
 # Application definition
 
@@ -38,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'blog',
     'south',
+    'linaro_django_pagination',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -47,6 +49,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'linaro_django_pagination.middleware.PaginationMiddleware',
 )
 
 ROOT_URLCONF = 'djblog.urls'
@@ -88,3 +91,13 @@ STATIC_DIRS = (
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, "templates"),
     )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+ 'django.contrib.auth.context_processors.auth',
+ 'django.core.context_processors.debug',
+ 'django.core.context_processors.i18n',
+ 'django.core.context_processors.media',
+ 'django.core.context_processors.static',
+ 'django.core.context_processors.tz',
+ 'django.contrib.messages.context_processors.messages',
+ 'django.core.context_processors.request',)
